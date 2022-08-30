@@ -3,26 +3,49 @@ const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
 const result = document.querySelector("#result");
-const counter = document.querySelector("#counter");
-let p1 = true;
-let p2 = false;
-counter.innerHTML = 0;
 let counterNum = 0;
-rock.addEventListener("click", function () {
-  console.log("rock");
-  p1 = false;
-  p2 = true;
-  info.innerHTML = "P2 select";
 
-  if (p2 === true) {
-    rock.addEventListener("click", function () {
-      console.log("p2 rock");
-      p1 = true;
-      p2 = false;
-      info.innerHTML = "p1 select";
-      counterNum++;
-      counter.innerHTML = counterNum;
-      console.log("counter =", counter);
-    });
-  }
+const rockPress = rock.addEventListener("click", function (e) {
+  e.preventDefault();
+  console.log("rock");
+  return "rock";
 });
+const paperPress = paper.addEventListener("click", function (e) {
+  e.preventDefault();
+  console.log("paper");
+  return "paper";
+});
+const scissorsPress = scissors.addEventListener("click", function (e) {
+  e.preventDefault();
+  console.log("scissors");
+  return "scissors";
+});
+
+const player1 = document.querySelector("#select");
+function game(player1, player2) {
+  if (player1 === "rock") {
+    if (player2 === "rock") {
+      console.log("draw");
+    } else if (player2 === "paper") {
+      console.log("player 2 wins!");
+    } else if (player2 === "scissors") {
+      console.log("player 1 wins!");
+    }
+  } else if (player1 === "paper") {
+    if (player2 === "paper") {
+      console.log("draw");
+    } else if (player2 === "scissors") {
+      console.log("player 2 wins!");
+    } else if (player2 === "rock") {
+      console.log("player 1 wins!");
+    }
+  } else if (player1 === "scissors") {
+    if (player2 === "rock") {
+      console.log("draw");
+    } else if (player2 === "paper") {
+      console.log("player 2 wins!");
+    } else if (player2 === "scissors") {
+      console.log("player 1 wins!");
+    }
+  }
+}
